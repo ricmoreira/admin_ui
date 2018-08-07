@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
-import { AuthenticationService } from './../../../services/authentication.service'
-import { Register } from './../../../models/request/authentication'
-import { Token, UserRegister } from './../../../models/response/authentication'
+import { AuthenticationService } from '../../../services/authentication.service'
+import { Register } from '../../../models/request/authentication'
+import { Token, UserRegister } from '../../../models/response/authentication'
 
 @Component({
   selector: 'app-dashboard',

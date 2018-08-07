@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
-import { AuthenticationService } from './../../../services/authentication.service'
-import { Login } from './../../../models/request/authentication'
-import { Token } from './../../../models/response/authentication'
+import { AuthenticationService } from '../../../services/authentication.service'
+import { Login } from '../../../models/request/authentication'
+import { Token } from '../../../models/response/authentication'
 import { User } from '../../../models/user';
 import { catchError, map, tap, switchMap } from 'rxjs/operators';
 import { Router } from '@angular/router';

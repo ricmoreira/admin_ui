@@ -42,6 +42,8 @@ import { ProgressComponent } from './progress.component';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { TooltipsComponent } from './tooltips.component';
 
+// Products Component
+import { ProductsComponent } from './products.component';
 
 // Components Routing
 import { BaseRoutingModule } from './base-routing.module';
@@ -65,6 +67,7 @@ import { BaseRoutingModule } from './base-routing.module';
     FormsComponent,
     SwitchesComponent,
     TablesComponent,
+    ProductsComponent,
     TabsComponent,
     CarouselsComponent,
     CollapsesComponent,

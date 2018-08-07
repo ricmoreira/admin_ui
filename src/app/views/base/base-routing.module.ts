@@ -12,6 +12,7 @@ import { PaginationsComponent } from './paginations.component';
 import {PopoversComponent} from './popovers.component';
 import {ProgressComponent} from './progress.component';
 import {TooltipsComponent} from './tooltips.component';
+import {ProductsComponent} from './products.component';
 
 const routes: Routes = [
   {
@@ -46,6 +47,13 @@ const routes: Routes = [
         component: TablesComponent,
         data: {
           title: 'Tables'
+        }
+      },
+      {
+        path: 'products',
+        component: ProductsComponent,
+        data: {
+          title: 'Products'
         }
       },
       {

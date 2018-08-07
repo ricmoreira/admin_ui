@@ -1,4 +1,4 @@
-import { Role } from './../user'
+import { Role } from '../user'
 
 export class Token {
     token: string;
