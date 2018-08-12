@@ -1,10 +1,8 @@
 import { Component, Input } from '@angular/core';
 import { AuthenticationService } from '../../../services/authentication.service'
 import { Login } from '../../../models/request/authentication'
-import { Token } from '../../../models/response/authentication'
 import { User } from '../../../models/user';
-import { catchError, map, tap, switchMap } from 'rxjs/operators';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -13,22 +11,25 @@ import { Router } from '@angular/router';
 export class LoginComponent {
   @Input() loginRequest: Login;
 
-  constructor(private service: AuthenticationService, private router: Router) {
+  returnUrl: string;
+
+  constructor(private service: AuthenticationService, private router: Router, private route: ActivatedRoute) {
     this.loginRequest = new Login();
+  }
+
+  ngOnInit() {
+    // reset login status
+    this.service.logout();
+
+    // get return url from route parameters or default to '/'
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/dashboard';
   }
 
   login() {
     this.service.login(this.loginRequest)
-      .pipe(
-        map((token: Token) => {
-          return token.token;
-        }),
-        switchMap((token: string) => {
-          return this.service.setUserFromJWT(token);
-        }),
-      ).subscribe(
+      .subscribe(
         (user: User) => {
-          this.router.navigate(['/dashboard']);
+          this.router.navigateByUrl(this.returnUrl);
           console.log(user);
         },
         error => {

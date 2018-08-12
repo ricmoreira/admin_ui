@@ -4,6 +4,7 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { AuthenticationService } from '../services/authentication.service'
+import { AuthGuardService } from '../services/auth-guard.service'
 
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
@@ -72,7 +73,8 @@ import { ChartsModule } from 'ng2-charts/ng2-charts';
     provide: LocationStrategy,
     useClass: HashLocationStrategy,
   },
-    AuthenticationService
+    AuthenticationService,
+    AuthGuardService
   ],
   bootstrap: [AppComponent]
 })
