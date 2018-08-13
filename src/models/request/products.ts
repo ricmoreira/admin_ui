@@ -1,14 +1,14 @@
 export class Product {
     id: string;
-    type: string;
-    code: string;
-    group: string;
-    description: string;
-    numberCode: string;
-    customsDetails: CustomsDetails;
+    ProductType: string;
+    ProductCode: string;
+    ProductGroup: string;
+    ProductDescription: string;
+    ProductNumberCode: string;
+    CustomsDetails: CustomsDetails;
 }
 
 export class CustomsDetails {
-    cncCode: Array<string>;
-    unNumber: Array<string>;
+    CNCode: Array<string>;
+    UNNumber: Array<string>;
 }

@@ -3,9 +3,6 @@ import { NgModule } from '@angular/core';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-import { AuthenticationService } from '../services/authentication.service'
-import { AuthGuardService } from '../services/auth-guard.service'
-
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
 import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
@@ -15,6 +12,11 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
 };
 
 import { AppComponent } from './app.component';
+
+// import services
+import { AuthenticationService } from '../services/authentication.service'
+import { AuthGuardService } from '../services/auth-guard.service'
+import { ProductsService } from '../services/products.service';
 
 // Import containers
 import { DefaultLayoutComponent } from './containers';
@@ -43,7 +45,6 @@ import { AppRoutingModule } from './app.routing';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { ChartsModule } from 'ng2-charts/ng2-charts';
-
 
 @NgModule({
   imports: [
@@ -74,7 +75,8 @@ import { ChartsModule } from 'ng2-charts/ng2-charts';
     useClass: HashLocationStrategy,
   },
     AuthenticationService,
-    AuthGuardService
+    AuthGuardService,
+    ProductsService
   ],
   bootstrap: [AppComponent]
 })
