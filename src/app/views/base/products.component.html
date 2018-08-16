@@ -3,7 +3,7 @@
     <div class="col-lg-12">
       <div class="card">
         <div class="card-header">
-          <i class="fa fa-align-justify"></i> Combined All Table
+          <i class="fa fa-align-justify"></i> Products List
         </div>
         <div class="card-body">
           <table class="table table-bordered table-striped table-sm">
@@ -34,6 +34,7 @@
               </tr>
             </tbody>
           </table>
+          <pre class="card card-body card-header mb-3">Page: {{currentPage}}/{{totalPages}}</pre>
           <nav>
             <ul class="pagination">
               <li class="page-item" ng-show="showPrevious"><a class="page-link" (click)="loadPrevProducts()">Prev</a></li>

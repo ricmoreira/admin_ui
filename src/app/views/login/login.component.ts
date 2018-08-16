@@ -13,7 +13,10 @@ export class LoginComponent {
 
   returnUrl: string;
 
-  constructor(private service: AuthenticationService, private router: Router, private route: ActivatedRoute) {
+  constructor(private service: AuthenticationService,
+    private router: Router,
+    private route: ActivatedRoute) {
+
     this.loginRequest = new Login();
   }
 
@@ -30,10 +33,10 @@ export class LoginComponent {
       .subscribe(
         (user: User) => {
           this.router.navigateByUrl(this.returnUrl);
-          console.log(user);
+          console.log("Welcome " + user.username + " to ADMIN UI");
         },
         error => {
-          console.log("error:", error);
+          console.log(error);
         });
   }
 }

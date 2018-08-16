@@ -47,6 +47,7 @@ import { ProductsComponent } from './products.component';
 
 // Components Routing
 import { BaseRoutingModule } from './base-routing.module';
+import { SAFTComponent } from './saft.component';
 
 @NgModule({
   imports: [
@@ -68,6 +69,7 @@ import { BaseRoutingModule } from './base-routing.module';
     SwitchesComponent,
     TablesComponent,
     ProductsComponent,
+    SAFTComponent,
     TabsComponent,
     CarouselsComponent,
     CollapsesComponent,

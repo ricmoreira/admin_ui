@@ -83,6 +83,22 @@ export class AuthenticationService {
     return new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + jwt });
   }
 
+  /**
+   * Returns necessary headers for doing requests to ADMIN API SAFT resource
+   */
+  public getAdminAPISAFTRequestHeaders(): HttpHeaders {
+    let jwt = localStorage.getItem('jwt');
+    return new HttpHeaders({ 'Content-Type': `multipart/form-data; boundary="----WebKitFormBoundary7MA4YWxkTrZu0gW"`, 'Authorization': 'Bearer ' + jwt });
+  }
+
+    /**
+   * Returns necessary headers for doing requests to ADMIN API SAFT resource
+   */
+  public getJWTHeaders(): HttpHeaders {
+    let jwt = localStorage.getItem('jwt');
+    return new HttpHeaders({'Authorization': 'Bearer ' + jwt });
+  }
+
   // PRIVATE HELPER METHODS
 
   private _getExpiration(): moment.Moment {

@@ -37,6 +37,11 @@ export const navItems = [
         icon: 'icon-basket-loaded'
       },
       {
+        name: 'SAFT',
+        url: '/base/saft',
+        icon: 'icon-folder-alt'
+      },
+      {
         name: 'Cards',
         url: '/base/cards',
         icon: 'icon-puzzle'

@@ -17,6 +17,9 @@ import { AppComponent } from './app.component';
 import { AuthenticationService } from '../services/authentication.service'
 import { AuthGuardService } from '../services/auth-guard.service'
 import { ProductsService } from '../services/products.service';
+import { SAFTService } from '../services/saft.service';
+import { NotificationService } from '../services/notification.service';
+
 
 // Import containers
 import { DefaultLayoutComponent } from './containers';
@@ -25,6 +28,7 @@ import { P404Component } from './views/error/404.component';
 import { P500Component } from './views/error/500.component';
 import { LoginComponent } from './views/login/login.component';
 import { RegisterComponent } from './views/register/register.component';
+import { NotificationComponent } from './notification/notification.component';
 
 const APP_CONTAINERS = [
   DefaultLayoutComponent
@@ -68,7 +72,8 @@ import { ChartsModule } from 'ng2-charts/ng2-charts';
     P404Component,
     P500Component,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    NotificationComponent,
   ],
   providers: [{
     provide: LocationStrategy,
@@ -76,8 +81,11 @@ import { ChartsModule } from 'ng2-charts/ng2-charts';
   },
     AuthenticationService,
     AuthGuardService,
-    ProductsService
+    ProductsService,
+    SAFTService,
+    NotificationService,
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  exports: []
 })
 export class AppModule { }

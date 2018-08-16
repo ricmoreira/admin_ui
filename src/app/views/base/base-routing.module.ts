@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AuthGuardService as AuthGuard } from './../../../services/auth-guard.service';
+import { AuthGuardService as AuthGuard } from '../../../services/auth-guard.service';
 
 import { CardsComponent } from './cards.component';
 import { FormsComponent } from './forms.component';
@@ -10,10 +10,11 @@ import { TabsComponent } from './tabs.component';
 import { CarouselsComponent } from './carousels.component';
 import { CollapsesComponent } from './collapses.component';
 import { PaginationsComponent } from './paginations.component';
-import {PopoversComponent} from './popovers.component';
-import {ProgressComponent} from './progress.component';
-import {TooltipsComponent} from './tooltips.component';
-import {ProductsComponent} from './products.component';
+import { PopoversComponent } from './popovers.component';
+import { ProgressComponent } from './progress.component';
+import { TooltipsComponent } from './tooltips.component';
+import { ProductsComponent } from './products.component';
+import { SAFTComponent } from './saft.component';
 
 const routes: Routes = [
   {
@@ -56,6 +57,14 @@ const routes: Routes = [
         canActivate: [AuthGuard],
         data: {
           title: 'Products'
+        }
+      },
+      {
+        path: 'saft',
+        component: SAFTComponent,
+        canActivate: [AuthGuard],
+        data: {
+          title: 'SAFT'
         }
       },
       {
@@ -115,4 +124,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class BaseRoutingModule {}
+export class BaseRoutingModule { }
