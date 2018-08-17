@@ -4,12 +4,6 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
-import { PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
-import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
-
-const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
-  suppressScrollX: true
-};
 
 import { AppComponent } from './app.component';
 
@@ -21,14 +15,15 @@ import { SAFTService } from '../services/saft.service';
 import { NotificationService } from '../services/notification.service';
 
 
-// Import containers
-import { DefaultLayoutComponent } from './containers';
-
-import { P404Component } from './views/error/404.component';
-import { P500Component } from './views/error/500.component';
-import { LoginComponent } from './views/login/login.component';
-import { RegisterComponent } from './views/register/register.component';
+// Import components
+import { DefaultLayoutComponent } from './default-layout/default-layout.component';
+import { P404Component } from './404/404.component';
+import { P500Component } from './500/500.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 import { NotificationComponent } from './notification/notification.component';
+import { ProductsComponent } from './products/products.component';
+import { SAFTComponent } from './saft/saft.component';
 
 const APP_CONTAINERS = [
   DefaultLayoutComponent
@@ -68,12 +63,14 @@ import { ChartsModule } from 'ng2-charts/ng2-charts';
   ],
   declarations: [
     AppComponent,
-    ...APP_CONTAINERS,
+    DefaultLayoutComponent,
     P404Component,
     P500Component,
     LoginComponent,
     RegisterComponent,
     NotificationComponent,
+    ProductsComponent,
+    SAFTComponent
   ],
   providers: [{
     provide: LocationStrategy,

@@ -1,13 +1,15 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule, CanActivate } from '@angular/router';
+import { AuthGuardService as AuthGuard } from './../services/auth-guard.service';
 
-// Import Containers
-import { DefaultLayoutComponent } from './containers';
-
-import { P404Component } from './views/error/404.component';
-import { P500Component } from './views/error/500.component';
-import { LoginComponent } from './views/login/login.component';
-import { RegisterComponent } from './views/register/register.component';
+// Import components
+import { DefaultLayoutComponent } from './default-layout/default-layout.component';
+import { P404Component } from './404/404.component';
+import { P500Component } from './500/500.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+import { ProductsComponent } from './products/products.component';
+import { SAFTComponent } from './saft/saft.component';
 
 export const routes: Routes = [
   {
@@ -51,37 +53,21 @@ export const routes: Routes = [
     },
     children: [
       {
-        path: 'base',
-        loadChildren: './views/base/base.module#BaseModule'
+        path: 'products/list',
+        component: ProductsComponent,
+        canActivate: [AuthGuard],
+        data: {
+          title: 'Products'
+        }
       },
       {
-        path: 'buttons',
-        loadChildren: './views/buttons/buttons.module#ButtonsModule'
+        path: 'saft/upload',
+        component: SAFTComponent,
+        canActivate: [AuthGuard],
+        data: {
+          title: 'SAFT'
+        }
       },
-      {
-        path: 'charts',
-        loadChildren: './views/chartjs/chartjs.module#ChartJSModule'
-      },
-      {
-        path: 'dashboard',
-        loadChildren: './views/dashboard/dashboard.module#DashboardModule'
-      },
-      {
-        path: 'icons',
-        loadChildren: './views/icons/icons.module#IconsModule'
-      },
-      {
-        path: 'notifications',
-        loadChildren: './views/notifications/notifications.module#NotificationsModule'
-      },
-      {
-        path: 'theme',
-        loadChildren: './views/theme/theme.module#ThemeModule'
-      },
-      {
-        path: 'widgets',
-        loadChildren: './views/widgets/widgets.module#WidgetsModule'
-      }
     ]
   }
 ];
