@@ -11,9 +11,9 @@ import { AppComponent } from './app.component';
 import { AuthenticationService } from '../services/authentication.service'
 import { AuthGuardService } from '../services/auth-guard.service'
 import { ProductsService } from '../services/products.service';
+import { InvoicesService } from '../services/invoices.service';
 import { SAFTService } from '../services/saft.service';
 import { NotificationService } from '../services/notification.service';
-
 
 // Import components
 import { DefaultLayoutComponent } from './default-layout/default-layout.component';
@@ -23,6 +23,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { NotificationComponent } from './notification/notification.component';
 import { ProductsComponent } from './products/products.component';
+import { InvoicesComponent } from './invoices/invoices.component';
 import { SAFTComponent } from './saft/saft.component';
 
 const APP_CONTAINERS = [
@@ -70,6 +71,7 @@ import { ChartsModule } from 'ng2-charts/ng2-charts';
     RegisterComponent,
     NotificationComponent,
     ProductsComponent,
+    InvoicesComponent,
     SAFTComponent
   ],
   providers: [{
@@ -79,6 +81,7 @@ import { ChartsModule } from 'ng2-charts/ng2-charts';
     AuthenticationService,
     AuthGuardService,
     ProductsService,
+    InvoicesService,
     SAFTService,
     NotificationService,
   ],

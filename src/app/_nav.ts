@@ -15,6 +15,15 @@ export const navItems = [
   },
   {
     title: true,
+    name: 'Invoices'
+  },
+  {
+    name: 'Invoices List',
+    url: '/invoices/list',
+    icon: 'icon-list',
+  },
+  {
+    title: true,
     name: 'SAF-T'
   },
   {

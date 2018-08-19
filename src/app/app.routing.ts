@@ -10,6 +10,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ProductsComponent } from './products/products.component';
 import { SAFTComponent } from './saft/saft.component';
+import { InvoicesComponent } from './invoices/invoices.component';
 
 export const routes: Routes = [
   {
@@ -58,6 +59,14 @@ export const routes: Routes = [
         canActivate: [AuthGuard],
         data: {
           title: 'Products'
+        }
+      },
+      {
+        path: 'invoices/list',
+        component: InvoicesComponent,
+        canActivate: [AuthGuard],
+        data: {
+          title: 'Invoices'
         }
       },
       {

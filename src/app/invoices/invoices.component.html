@@ -3,31 +3,29 @@
     <div class="col-lg-12">
       <div class="card">
         <div class="card-header">
-          <i class="fa fa-align-justify"></i> Products List
+          <i class="fa fa-align-justify"></i> Invoices List
         </div>
         <div class="card-body">
           <table class="table table-bordered table-striped table-sm">
             <thead>
               <tr>
                 <th>ID</th>
-                <th>Type</th>
-                <th>Code</th>
-                <th>Group</th>
-                <th>Description</th>
-                <th>Number Code</th>
-                <th>Customs Details</th>
+                <th>Invoice No.</th>
+                <th>Date</th>
+                <th>Net Total</th>
+                <th>Tax Payable</th>
+                <th>Gross Total</th>
                 <th>Status</th>
               </tr>
             </thead>
-            <tbody ng-show="products.length">
-              <tr *ngFor="let product of products">
-                <td>{{product.id}}</td>
-                <td>{{product.ProductType}}</td>
-                <td>{{product.ProductCode}}</td>
-                <td>{{product.ProductGroup}}</td>
-                <td>{{product.ProductDescription}}</td>
-                <td>{{product.ProductNumberCode}}</td>
-                <td>{{product.CustomsDetails}}</td>
+            <tbody ng-show="invoices.length">
+              <tr *ngFor="let invoice of invoices">
+                <td>{{invoice.id}}</td>
+                <td>{{invoice.InvoiceNo}}</td>
+                <td>{{invoice.InvoiceDate}}</td>
+                <td>{{invoice.NetTotal}}</td>
+                <td>{{invoice.TaxPayable}}</td>
+                <td>{{invoice.GrossTotal}}</td>
                 <td>
                   <span class="badge badge-success">Active</span>
                 </td>

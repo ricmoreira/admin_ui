@@ -1,24 +1,24 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { ProductsService } from '../../services/products.service';
+import { InvoicesService } from '../../services/invoices.service';
 import { List as ListReq } from '../../models/request/list';
 import { List as ListRes } from '../../models/response/list';
-import { Product } from '../../models/response/products';
+import { Invoice } from '../../models/response/invoices';
 import { NotificationService } from '../../services/notification.service';
 import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
-  templateUrl: './products.component.html'
+  templateUrl: './invoices.component.html'
 })
 
-export class ProductsComponent {
+export class InvoicesComponent {
 
-  private PRODUCTS_BATCH_SIZE: number = 15;
+  private INVOICES_BATCH_SIZE: number = 15;
 
   public showPrevious: boolean;
   public showNext: boolean;
 
-  public totalProducts: number;
+  public totalInvoices: number;
 
   public perPage: number;
 
@@ -26,33 +26,33 @@ export class ProductsComponent {
 
   public totalPages: number;
 
-  public products: Array<Product>
+  public invoices: Array<Invoice>
 
-  constructor(private notificationService: NotificationService, private service: ProductsService, private router: Router, ) { }
+  constructor(private notificationService: NotificationService, private service: InvoicesService, private router: Router, ) { }
 
   ngOnInit() {
     this.showPrevious = false;
     this.showNext = true;
 
-    // load products list with first 15 products
-    let req = new ListReq(this.PRODUCTS_BATCH_SIZE, 1);
+    // load invoices list with first 15 invoices
+    let req = new ListReq(this.INVOICES_BATCH_SIZE, 1);
     this.fetchList(req);
   }
 
   public fetchList(req: ListReq): void {
-    this.service.listProducts(req)
+    this.service.listInvoices(req)
       .subscribe(
         (list: ListRes) => {
-          this.totalProducts = list.total;
+          this.totalInvoices = list.total;
           this.perPage = list.per_page;
           this.currentPage = list.page;
-          this.totalPages = Math.ceil(this.totalProducts / this.perPage);
+          this.totalPages = Math.ceil(this.totalInvoices / this.perPage);
 
-          // fill component with products
-          this.products = new Array<Product>();
+          // fill component with invoices
+          this.invoices = new Array<Invoice>();
           list.items.map((item: any) => {
-            let product = <Product>item;
-            this.products.push(product);
+            let invoice = <Invoice>item;
+            this.invoices.push(invoice);
           }, this);
 
           // show previous and show next buttons logic
@@ -68,17 +68,17 @@ export class ProductsComponent {
 
   public loadPrev(): void {
     let pageNumber = this.currentPage - 1 <= 1 ? 1 : this.currentPage - 1;
-    let req = new ListReq(this.PRODUCTS_BATCH_SIZE, pageNumber);
+    let req = new ListReq(this.INVOICES_BATCH_SIZE, pageNumber);
     this.fetchList(req);
   }
 
   public loadNext(): void {
     let pageNumber = this.currentPage + 1 <= this.totalPages ? this.currentPage + 1 : this.currentPage;
-    let req = new ListReq(this.PRODUCTS_BATCH_SIZE, pageNumber);
+    let req = new ListReq(this.INVOICES_BATCH_SIZE, pageNumber);
     this.fetchList(req);
   }
 
   public listIsEmpty(): boolean {
-    return !(this.products.length > 0)
+    return !(this.invoices.length > 0)
   }
 }
