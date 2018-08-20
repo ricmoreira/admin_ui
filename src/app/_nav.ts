@@ -6,6 +6,15 @@ export const navItems = [
   },
   {
     title: true,
+    name: 'Company Info'
+  },
+  {
+    name: 'Details',
+    url: '/company-info/detail',
+    icon: 'fa fa-id-card-o',
+  },
+  {
+    title: true,
     name: 'Products'
   },
   {

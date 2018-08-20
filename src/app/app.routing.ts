@@ -11,6 +11,7 @@ import { RegisterComponent } from './register/register.component';
 import { ProductsComponent } from './products/products.component';
 import { SAFTComponent } from './saft/saft.component';
 import { InvoicesComponent } from './invoices/invoices.component';
+import { CompanyInfoComponent } from './company-info/company-info.component';
 
 export const routes: Routes = [
   {
@@ -53,6 +54,14 @@ export const routes: Routes = [
       title: 'Home'
     },
     children: [
+      {
+        path: 'company-info/detail',
+        component: CompanyInfoComponent,
+        canActivate: [AuthGuard],
+        data: {
+          title: 'Company Info'
+        }
+      },
       {
         path: 'products/list',
         component: ProductsComponent,

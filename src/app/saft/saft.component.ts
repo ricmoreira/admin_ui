@@ -22,7 +22,10 @@ export class SAFTComponent {
     this.saftService.postFile(this.selectedFile)
     .subscribe(
       (res: SaftToKafka) => {
-        this.notificationService.success(`Uploaded ${res.products_count} products`)
+        this.notificationService.success(`Uploaded ${res.products.products_count} products.\n
+        Uploaded ${res.invoices.invoices_count} invoices.\n
+        Uploaded company information.
+        `)
       },
       (err: HttpErrorResponse) => {
         console.log(err);

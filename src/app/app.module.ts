@@ -13,6 +13,7 @@ import { AuthGuardService } from '../services/auth-guard.service'
 import { ProductsService } from '../services/products.service';
 import { InvoicesService } from '../services/invoices.service';
 import { SAFTService } from '../services/saft.service';
+import { HeadersService } from '../services/headers.service';
 import { NotificationService } from '../services/notification.service';
 
 // Import components
@@ -25,6 +26,7 @@ import { NotificationComponent } from './notification/notification.component';
 import { ProductsComponent } from './products/products.component';
 import { InvoicesComponent } from './invoices/invoices.component';
 import { SAFTComponent } from './saft/saft.component';
+import { CompanyInfoComponent } from './company-info/company-info.component';
 
 const APP_CONTAINERS = [
   DefaultLayoutComponent
@@ -72,7 +74,8 @@ import { ChartsModule } from 'ng2-charts/ng2-charts';
     NotificationComponent,
     ProductsComponent,
     InvoicesComponent,
-    SAFTComponent
+    SAFTComponent,
+    CompanyInfoComponent
   ],
   providers: [{
     provide: LocationStrategy,
@@ -84,6 +87,7 @@ import { ChartsModule } from 'ng2-charts/ng2-charts';
     InvoicesService,
     SAFTService,
     NotificationService,
+    HeadersService,
   ],
   bootstrap: [AppComponent],
   exports: []
