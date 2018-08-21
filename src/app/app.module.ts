@@ -11,6 +11,7 @@ import { AppComponent } from './app.component';
 import { AuthenticationService } from '../services/authentication.service'
 import { AuthGuardService } from '../services/auth-guard.service'
 import { ProductsService } from '../services/products.service';
+import { StockMovsService } from '../services/stock-movs.service';
 import { InvoicesService } from '../services/invoices.service';
 import { SAFTService } from '../services/saft.service';
 import { HeadersService } from '../services/headers.service';
@@ -24,6 +25,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { NotificationComponent } from './notification/notification.component';
 import { ProductsComponent } from './products/products.component';
+import { StockMovsComponent } from './stock-movs/stock-movs.component';
 import { InvoicesComponent } from './invoices/invoices.component';
 import { SAFTComponent } from './saft/saft.component';
 import { CompanyInfoComponent } from './company-info/company-info.component';
@@ -73,6 +75,7 @@ import { ChartsModule } from 'ng2-charts/ng2-charts';
     RegisterComponent,
     NotificationComponent,
     ProductsComponent,
+    StockMovsComponent,
     InvoicesComponent,
     SAFTComponent,
     CompanyInfoComponent
@@ -84,6 +87,7 @@ import { ChartsModule } from 'ng2-charts/ng2-charts';
     AuthenticationService,
     AuthGuardService,
     ProductsService,
+    StockMovsService,
     InvoicesService,
     SAFTService,
     NotificationService,

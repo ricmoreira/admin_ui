@@ -12,6 +12,7 @@ import { ProductsComponent } from './products/products.component';
 import { SAFTComponent } from './saft/saft.component';
 import { InvoicesComponent } from './invoices/invoices.component';
 import { CompanyInfoComponent } from './company-info/company-info.component';
+import { StockMovsComponent } from './stock-movs/stock-movs.component';
 
 export const routes: Routes = [
   {
@@ -68,6 +69,14 @@ export const routes: Routes = [
         canActivate: [AuthGuard],
         data: {
           title: 'Products'
+        }
+      },
+      {
+        path: 'stock/movement/list',
+        component: StockMovsComponent,
+        canActivate: [AuthGuard],
+        data: {
+          title: 'Stock Movements'
         }
       },
       {

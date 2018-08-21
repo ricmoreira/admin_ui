@@ -18,7 +18,7 @@ export const navItems = [
     name: 'Products'
   },
   {
-    name: 'Products List',
+    name: 'List',
     url: '/products/list',
     icon: 'icon-list',
   },
@@ -27,8 +27,17 @@ export const navItems = [
     name: 'Invoices'
   },
   {
-    name: 'Invoices List',
+    name: 'List',
     url: '/invoices/list',
+    icon: 'icon-list',
+  },
+  {
+    title: true,
+    name: 'Stock Movements'
+  },
+  {
+    name: 'List',
+    url: '/stock/movement/list',
     icon: 'icon-list',
   },
   {
@@ -36,7 +45,7 @@ export const navItems = [
     name: 'SAF-T'
   },
   {
-    name: 'Upload SAF-T',
+    name: 'Upload',
     url: '/saft/upload',
     icon: 'icon-cloud-upload'
   }
