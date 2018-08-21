@@ -41,6 +41,11 @@ export const navItems = [
     icon: 'icon-list',
   },
   {
+    name: 'Create',
+    url: '/stock/movement/create',
+    icon: 'icon-list',
+  },
+  {
     title: true,
     name: 'SAF-T'
   },

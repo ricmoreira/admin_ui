@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { StockMov as ReqStockMov } from '../models/request/stock-movs';
+import { StockMovCreate as ReqStockMov } from '../models/request/stock-movs';
 import { StockMov as RespStockMov } from '../models/response/stock-movs';
 import { List as ReqList} from '../models/request/list';
 import { List as ResList} from '../models/response/list';

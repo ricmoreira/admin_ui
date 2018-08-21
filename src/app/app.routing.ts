@@ -12,7 +12,8 @@ import { ProductsComponent } from './products/products.component';
 import { SAFTComponent } from './saft/saft.component';
 import { InvoicesComponent } from './invoices/invoices.component';
 import { CompanyInfoComponent } from './company-info/company-info.component';
-import { StockMovsComponent } from './stock-movs/stock-movs.component';
+import { StockMovsListComponent } from './stock-movs/stock-movs-list.component';
+import { StockMovsCreateComponent } from './stock-movs/stock-movs-create.component';
 
 export const routes: Routes = [
   {
@@ -73,10 +74,18 @@ export const routes: Routes = [
       },
       {
         path: 'stock/movement/list',
-        component: StockMovsComponent,
+        component: StockMovsListComponent,
         canActivate: [AuthGuard],
         data: {
-          title: 'Stock Movements'
+          title: 'List'
+        }
+      },
+      {
+        path: 'stock/movement/create',
+        component: StockMovsCreateComponent,
+        canActivate: [AuthGuard],
+        data: {
+          title: 'Create'
         }
       },
       {

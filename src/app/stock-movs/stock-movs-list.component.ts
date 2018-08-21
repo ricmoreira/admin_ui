@@ -8,10 +8,10 @@ import { NotificationService } from '../../services/notification.service';
 import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
-  templateUrl: './stock-movs.component.html'
+  templateUrl: './stock-movs-list.component.html'
 })
 
-export class StockMovsComponent {
+export class StockMovsListComponent {
 
   private LIST_BATCH_SIZE: number = 15;
 

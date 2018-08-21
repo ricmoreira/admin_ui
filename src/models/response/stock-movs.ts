@@ -1,6 +1,6 @@
 export class StockMov {
     id: string
-    MovemementType: string
+    MovementType: string
     DocumentID: string
     Line: number
     Quantity: number
