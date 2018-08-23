@@ -1,21 +1,25 @@
-import { Component } from '@angular/core';
+import { Component, AfterViewInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ProductsService } from '../../services/products.service';
-import { List as ListReq } from '../../models/request/list';
+import { List as ListReq, Filter } from '../../models/request/list';
 import { List as ListRes } from '../../models/response/list';
 import { Product } from '../../models/response/products';
 import { NotificationService } from '../../services/notification.service';
 import { HttpErrorResponse } from '@angular/common/http';
+import { fromEvent, Observable } from 'rxjs';
+import 'rxjs/add/observable/of';
+import { map, filter, debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
 
 @Component({
   templateUrl: './products.component.html'
 })
 
-export class ProductsComponent {
+export class ProductsComponent implements AfterViewInit {
 
   private PRODUCTS_BATCH_SIZE: number = 15;
 
   public showPrevious: boolean;
+  
   public showNext: boolean;
 
   public totalProducts: number;
@@ -26,7 +30,9 @@ export class ProductsComponent {
 
   public totalPages: number;
 
-  public products: Array<Product>
+  public products: Array<Product>;
+
+  public storedReq: ListReq;
 
   constructor(private notificationService: NotificationService, private service: ProductsService, private router: Router, ) { }
 
@@ -39,8 +45,33 @@ export class ProductsComponent {
     this.fetchList(req);
   }
 
+  ngAfterViewInit() {
+    const searchBox = document.getElementById('search-box');
+
+    const typeahead = fromEvent(searchBox, 'input').pipe(
+      map((e: KeyboardEvent) => (<HTMLInputElement>event.target).value),
+      filter(text => text.length > 2),
+      debounceTime(10),
+      distinctUntilChanged(),
+      switchMap(search => {
+        let filter = new Filter("ProductDescription", search);
+        let req = new ListReq(this.PRODUCTS_BATCH_SIZE, 1,"ProductDescription","normal", filter);
+        return Observable.of(this.fetchList(req));
+      })
+    );
+    // start search box type handling 
+    typeahead.subscribe(
+      () => {}, // success do nothing
+      ((error: HttpErrorResponse) => {
+        console.log(error)
+        this.notificationService.error(error.message);
+      })
+    );
+  }
+
   public fetchList(req: ListReq): void {
-    this.service.listProducts(req)
+    this.storedReq = req;
+    this.service.list(req)
       .subscribe(
         (list: ListRes) => {
           this.totalProducts = list.total;
@@ -66,19 +97,31 @@ export class ProductsComponent {
       );
   }
 
-  public loadPrev(): void {
+  public loadPrev(): boolean {
+    if(!this.showPrevious) {
+      return false;
+    }
     let pageNumber = this.currentPage - 1 <= 1 ? 1 : this.currentPage - 1;
-    let req = new ListReq(this.PRODUCTS_BATCH_SIZE, pageNumber);
-    this.fetchList(req);
+
+    this.storedReq.page = pageNumber;
+    this.fetchList(this.storedReq);
   }
 
-  public loadNext(): void {
+  public loadNext(): boolean {
+    if(!this.showNext) {
+      return false;
+    }
     let pageNumber = this.currentPage + 1 <= this.totalPages ? this.currentPage + 1 : this.currentPage;
-    let req = new ListReq(this.PRODUCTS_BATCH_SIZE, pageNumber);
-    this.fetchList(req);
+    
+    this.storedReq.page = pageNumber;
+    this.fetchList(this.storedReq);
   }
 
   public listIsEmpty(): boolean {
     return !(this.products.length > 0)
+  }
+
+  public doNothing() {
+    return false;
   }
 }

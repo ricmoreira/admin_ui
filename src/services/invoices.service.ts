@@ -33,7 +33,12 @@ export class InvoicesService {
   * @param req - List request
   */
   listInvoices(req: ReqList): Observable<ResList> {
-    let url = this._invoices_Url + `?page=${req.page}&per_page=${req.per_page}`
+    let url = this._invoices_Url + `?page=${req.page}&per_page=${req.per_page}&order=${req.order}&sort=${req.sort}`
+
+    if (req.filter != null) {
+      url = url.concat(`&${req.filter.key}=${req.filter.value}`);
+    }
+
     return this.http.get<ResList>(url, { headers: this._authService.getAdminAPIRequestHeaders() });
   }
 }

@@ -7,4 +7,6 @@ export class StockMov {
     ProductCode: string
     UnitOfMeasure: string
     Time: Date
+    Dir: string
+    WharehouseID: string
 }

@@ -24,7 +24,7 @@ export class ProductsService {
   * Creates a Product
   * @param req - Product Create request
   */
-  createProduct(req: ReqProduct): Observable<RespProduct> {
+  create(req: ReqProduct): Observable<RespProduct> {
     return this.http.post<RespProduct>(this._products_Url, req, { headers: this._authService.getAdminAPIRequestHeaders() });
   }
 
@@ -32,8 +32,12 @@ export class ProductsService {
   * Lists Products
   * @param req - List request
   */
-  listProducts(req: ReqList): Observable<ResList> {
-    let url = this._products_Url + `?page=${req.page}&per_page=${req.per_page}`
+  list(req: ReqList): Observable<ResList> {
+    let url = this._products_Url + `?page=${req.page}&per_page=${req.per_page}&order=${req.order}&sort=${req.sort}`
+
+    if (req.filter != null) {
+      url = url.concat(`&${req.filter.key}=${req.filter.value}`);
+    }
     return this.http.get<ResList>(url, { headers: this._authService.getAdminAPIRequestHeaders() });
   }
 }

@@ -7,6 +7,8 @@ export class StockMov {
     ProductCode: string
     UnitOfMeasure: string
     Time: Date
+    Dir: string
+    WharehouseID: string
 }
 
 export class StockMovCreate {
@@ -17,4 +19,6 @@ export class StockMovCreate {
     ProductCode: string
     UnitOfMeasure: string
     Time: Date
+    Dir: string
+    WharehouseID: string
 }

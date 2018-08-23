@@ -23,7 +23,7 @@ export class HeadersService {
   * @param req - List request
   */
   list(req: ReqList): Observable<ResList> {
-    let url = this._headers_Url + `?page=${req.page}&per_page=${req.per_page}`
+    let url = this._headers_Url + `?page=${req.page}&per_page=${req.per_page}&order=reverse&sort=_id`
     return this.http.get<ResList>(url, { headers: this._authService.getAdminAPIRequestHeaders() });
   }
 }

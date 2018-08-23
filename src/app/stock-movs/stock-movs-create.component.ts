@@ -22,6 +22,8 @@ export class StockMovsCreateComponent {
     this.generateDocumentID();
     this.stockMov.MovementType = "ADMIN";
     this.stockMov.UnitOfMeasure = "UNI";
+    this.stockMov.WharehouseID = "1";
+    this.stockMov.Dir = "OUT";
   }
 
   private generateDocumentID() {
@@ -43,5 +45,9 @@ export class StockMovsCreateComponent {
           this.notificationService.error(error.message);
         })
       );
+  }
+
+  public doNothing() {
+    return false;
   }
 }
