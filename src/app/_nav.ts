@@ -23,6 +23,11 @@ export const navItems = [
     icon: 'icon-list',
   },
   {
+    name: 'Stock',
+    url: '/products/stock',
+    icon: 'fa fa-archive',
+  },
+  {
     title: true,
     name: 'Invoices'
   },

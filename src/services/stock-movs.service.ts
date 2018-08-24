@@ -3,8 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { StockMovCreate as ReqStockMov } from '../models/request/stock-movs';
 import { StockMov as RespStockMov } from '../models/response/stock-movs';
-import { List as ReqList} from '../models/request/list';
-import { List as ResList} from '../models/response/list';
+import { List as ReqList } from '../models/request/list';
+import { List as ResList } from '../models/response/list';
 import { Configs } from '../assets/config';
 import { Router } from "@angular/router";
 import 'rxjs/add/operator/catch';
@@ -15,9 +15,11 @@ import { AuthenticationService } from './authentication.service';
 export class StockMovsService {
 
   private _stockMovUrl: string;
+  private _stockCountUrl: string;
 
   constructor(private http: HttpClient, private router: Router, private _authService: AuthenticationService) {
     this._stockMovUrl = `${Configs.admin_api}${Configs.admin_api_stocks}/movement`;
+    this._stockCountUrl = `${Configs.admin_api}${Configs.admin_api_stocks}/count`;
   }
 
   /**
@@ -34,6 +36,19 @@ export class StockMovsService {
   */
   list(req: ReqList): Observable<ResList> {
     let url = this._stockMovUrl + `?page=${req.page}&per_page=${req.per_page}&order=${req.order}&sort=${req.sort}`
+
+    if (req.filter != null) {
+      url = url.concat(`&${req.filter.key}=${req.filter.value}`);
+    }
+    return this.http.get<ResList>(url, { headers: this._authService.getAdminAPIRequestHeaders() });
+  }
+
+  /**
+  * Lists Stock Movements
+  * @param req - List request
+  */
+  listStockCount(req: ReqList): Observable<ResList> {
+    let url = this._stockCountUrl + `?page=${req.page}&per_page=${req.per_page}&order=${req.order}&sort=${req.sort}`
 
     if (req.filter != null) {
       url = url.concat(`&${req.filter.key}=${req.filter.value}`);

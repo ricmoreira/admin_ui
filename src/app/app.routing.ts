@@ -14,6 +14,7 @@ import { InvoicesComponent } from './invoices/invoices.component';
 import { CompanyInfoComponent } from './company-info/company-info.component';
 import { StockMovsListComponent } from './stock-movs/stock-movs-list.component';
 import { StockMovsCreateComponent } from './stock-movs/stock-movs-create.component';
+import { StockCountListComponent } from './stock-count/stock-count-list.component';
 
 export const routes: Routes = [
   {
@@ -70,6 +71,14 @@ export const routes: Routes = [
         canActivate: [AuthGuard],
         data: {
           title: 'Products'
+        }
+      },
+      {
+        path: 'products/stock',
+        component: StockCountListComponent,
+        canActivate: [AuthGuard],
+        data: {
+          title: 'Products Stock'
         }
       },
       {

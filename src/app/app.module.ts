@@ -27,6 +27,7 @@ import { NotificationComponent } from './notification/notification.component';
 import { ProductsComponent } from './products/products.component';
 import { StockMovsListComponent } from './stock-movs/stock-movs-list.component';
 import { StockMovsCreateComponent } from './stock-movs/stock-movs-create.component';
+import { StockCountListComponent } from './stock-count/stock-count-list.component';
 import { InvoicesComponent } from './invoices/invoices.component';
 import { SAFTComponent } from './saft/saft.component';
 import { CompanyInfoComponent } from './company-info/company-info.component';
@@ -80,7 +81,8 @@ import { ChartsModule } from 'ng2-charts/ng2-charts';
     StockMovsCreateComponent,
     InvoicesComponent,
     SAFTComponent,
-    CompanyInfoComponent
+    CompanyInfoComponent,
+    StockCountListComponent
   ],
   providers: [{
     provide: LocationStrategy,
