@@ -48,7 +48,7 @@ export const navItems = [
   {
     name: 'Create',
     url: '/stock/movement/create',
-    icon: 'icon-list',
+    icon: 'fa fa-exchange',
   },
   {
     title: true,
